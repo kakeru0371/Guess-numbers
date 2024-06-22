@@ -11,6 +11,17 @@ def generator():
             answer += [rand]
     return answer
 
+def check(guess, answer):
+    hit = 0
+    blow = 0
+    for i in range(len(guess)):
+        if guess[i] == answer[i]:
+            hit += 1
+        else:
+            if guess[i] in answer:
+                blow += 1
+    return [hit, blow]
+
 def main():
     #答えの生成
     answer = random.randint(100, 999)
