@@ -28,7 +28,7 @@ def main():
     answer = generator()
     max_count = 10
     count = 0
-    while count <= max_count:
+    while count < max_count:
         count += 1
         num = input('３桁の数字を入力してください')
         guess = [int(num[i]) for i in range(len(num))]
