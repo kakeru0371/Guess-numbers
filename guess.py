@@ -11,6 +11,7 @@ def generator():
             answer += [rand]
     return answer
 
+#hit&blowの確認
 def check(guess, answer):
     hit = 0
     blow = 0
@@ -23,19 +24,21 @@ def check(guess, answer):
     return [hit, blow]
 
 def main():
-    #答えの生成
-    answer = random.randint(100, 999)
-
+    print('ゲームスタート')
+    answer = generator()
     max_count = 10
-    for i in range(1, max_count + 1):
-        print('３桁の数字を入力してください')
-        num = int(input())
-        if num == answer:
+    count = 0
+    while count <= max_count:
+        count += 1
+        num = input('３桁の数字を入力してください')
+        guess = [int(num[i]) for i in range(len(num))]
+        [hit, blow] = check(guess, answer)
+        print("{}: {} Hit, {} Blow".format(num, hit, blow))
+        if hit == len(answer):
             print('正解です！おめでとうございます！')
             break
-
-
-
+    if count == max_count:
+        print('残念...正解は{}でした'.format(answer))
 
 if __name__ == '__main__':
     main()
